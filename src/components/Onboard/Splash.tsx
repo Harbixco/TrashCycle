@@ -26,7 +26,7 @@ export default function Splash() {
           type="button"
           className="rounded-lg bg-[#79AD27] px-5 py-2 text-sm font-semibold text-white hover:bg-green-800 hover:text-white"
         >
-          <Link to="/educate">Get Started</Link>
+          <Link to="/login">Get Started</Link>
         </button>
       </div>
     </div>

@@ -32,7 +32,10 @@ import {
   DateAndTime,
   DriverComing,
   ErrorPage,
+  ForgotPassword,
 } from "./components";
+
+import { Dashboard, DashboardLayout } from "./pages";
 
 function App() {
   const router = createBrowserRouter([
@@ -52,6 +55,10 @@ function App() {
     {
       path: "/signup",
       element: <Signup />,
+    },
+    {
+      path: "/forgot-password",
+      element: <ForgotPassword />,
     },
     {
       path: "/verifySuccesful",
@@ -74,7 +81,7 @@ function App() {
       path: "/cancel-pickup",
       element: <CancelPickup />,
     },
-   
+
     {
       path: "/edit-profile",
       element: <EditProfile />,
@@ -165,6 +172,18 @@ function App() {
       path: "/driver-coming",
       element: <DriverComing />,
     },
+
+    {
+      path: "/dashboard",
+      element: <DashboardLayout />,
+      children: [
+        {
+          index: true,
+          element: <Dashboard />,
+        },
+      ],
+    },
+
     {
       path: "*",
       element: <ErrorPage />,
