@@ -30,3 +30,4 @@ export { default as BookingSummary } from "./Scedule-pickup/BookingSummary";
 export { default as DateAndTime } from "./Scedule-pickup/DateAndTime";
 export { default as DriverComing } from "./Scedule-pickup/DriverComing";
 export { default as ErrorPage } from "./common/ErrorPage";
+export { default as ForgotPassword } from "./Auth/ForgotPassword";
