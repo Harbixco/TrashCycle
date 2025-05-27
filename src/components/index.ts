@@ -31,3 +31,11 @@ export { default as DateAndTime } from "./Scedule-pickup/DateAndTime";
 export { default as DriverComing } from "./Scedule-pickup/DriverComing";
 export { default as ErrorPage } from "./common/ErrorPage";
 export { default as ForgotPassword } from "./Auth/ForgotPassword";
+export { default as PastPickups } from "./CustomerDashboard/PastPickups";
+export { default as Payment } from "./CustomerDashboard/Payment";
+export { default as PrivatePolicy } from "./CustomerDashboard/PrivatePolicy";
+export { default as SchedulePickups } from "./CustomerDashboard/SchedulePickups";
+export { default as Settings } from "./CustomerDashboard/Settings";
+export { default as Support } from "./CustomerDashboard/Support";
+export {default as Logout } from "./CustomerDashboard/Logout"
+export {default as LocationSuccesful } from "./Auth/LocationSuccesful"

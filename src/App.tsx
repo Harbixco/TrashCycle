@@ -33,6 +33,14 @@ import {
   DriverComing,
   ErrorPage,
   ForgotPassword,
+  PastPickups,
+  Payment,
+  PrivatePolicy,
+  SchedulePickups,
+  Settings,
+  Support,
+  Logout,
+  LocationSuccesful,
 } from "./components";
 
 import { Dashboard, DashboardLayout } from "./pages";
@@ -49,6 +57,10 @@ function App() {
       element: <EnableLocation />,
     },
     {
+      path: "/location-succesful",
+      element: <LocationSuccesful />,
+    },
+    {
       path: "/login",
       element: <Login />,
     },
@@ -61,7 +73,7 @@ function App() {
       element: <ForgotPassword />,
     },
     {
-      path: "/verifySuccesful",
+      path: "/verify-succesful",
       element: <VerifySuccesful />,
     },
     {
@@ -180,6 +192,34 @@ function App() {
         {
           index: true,
           element: <Dashboard />,
+        },
+        {
+          path: "/dashboard/past-pickups",
+          element: <PastPickups />,
+        },
+        {
+          path: "/dashboard/payment",
+          element: <Payment />,
+        },
+        {
+          path: "/dashboard/private-policy",
+          element: <PrivatePolicy />,
+        },
+        {
+          path: "/dashboard/schedule-pickups",
+          element: <SchedulePickups />,
+        },
+        {
+          path: "/dashboard/setting",
+          element: <Settings />,
+        },
+        {
+          path: "/dashboard/Support",
+          element: <Support />,
+        },
+        {
+          path: "/dashboard/logout",
+          element: <Logout />,
         },
       ],
     },

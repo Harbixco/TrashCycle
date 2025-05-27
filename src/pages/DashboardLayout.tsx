@@ -1,7 +1,7 @@
 /* eslint-disable tailwindcss/no-custom-classname */
 import { Outlet } from "react-router-dom";
 import Studentsidebar from "./Studentsidebar";
-import  DashboardNavbar  from "./DashboardNavbar";
+import DashboardNavbar from "../Header/DashboardNavbar";
 
 const DashboardLayout = () => {
   return (
@@ -10,8 +10,7 @@ const DashboardLayout = () => {
         <Studentsidebar />
       </div>
       <div className="ml-auto w-full md:w-3/4 lg:w-4/5 xl:w-[82%]">
-       
-        <div className="bg-adminBg fixed right-0 top-0 z-10 w-full py-3 md:w-3/4 lg:w-4/5 xl:w-[82%]">
+        <div className="fixed right-0 top-0 z-10 w-full bg-adminBg py-3 md:w-3/4 lg:w-4/5 xl:w-[82%]">
           <div className="mx-auto w-[92%] md:w-[96%]">
             <DashboardNavbar />
           </div>

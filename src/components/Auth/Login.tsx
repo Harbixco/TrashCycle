@@ -19,7 +19,7 @@ export default function Login() {
             placeholder="Enter Password"
             className="w-full rounded-md border border-green-700 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
           />
-          <div className="text-right">
+          <div className="pb-2 text-right">
             <Link
               to="/forgot-password"
               className="text-sm text-red-500 hover:underline"
