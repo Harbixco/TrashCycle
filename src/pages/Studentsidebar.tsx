@@ -8,10 +8,7 @@ import {
   Settings,
   LogOut,
   CircleHelp,
-  ChevronDown,
-  ChevronUp,
   Music2,
-  Tv,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -22,18 +19,10 @@ const Studentsidebar = () => {
     "bg-adminPrimary flex w-full items-center gap-x-3 py-1 pl-2 text-white mb-2";
   const inactive =
     "bg-white flex w-full items-center gap-x-3 py-1 pl-2 text-black mb-2";
-  const dropactive =
-    "bg-adminPrimary flex w-full items-center gap-x-3 py-1 pl-7 text-white mb-2";
-  const dropinactive =
-    "bg-white flex w-full items-center gap-x-3 py-1 pl-7 text-black mb-2";
-
-  const toggleCoursesActive = () => {
-    setIsCoursesActive(!isCoursesActive);
-  };
 
   return (
     <div className="h-screen w-full shadow">
-      <div className="mx-auto w-[92%] py-4">
+      <div className="mx-auto w-[92%] bg-[#27662A] py-4">
         <Link to="/">
           <img src={slide1} alt="logo" />
         </Link>
@@ -49,76 +38,33 @@ const Studentsidebar = () => {
         </NavLink>
 
         <NavLink
-          to="/dashboard/assignment"
+          to="/dashboard/schedule-pickups"
           className={({ isActive }) => (isActive ? active : inactive)}
         >
           <ClipboardList size={18} />
-          Assignment
+          Schedule Pickups
         </NavLink>
         <NavLink
-          to="/dashboard/learning"
+          to="/dashboard/past-pickups"
           className={({ isActive }) => (isActive ? active : inactive)}
         >
           <ChartLine size={18} />
-          My Learning
+          Past Pickups
         </NavLink>
         <NavLink
-          to="/dashboard/practice"
+          to="/dashboard/payment"
           className={({ isActive }) => (isActive ? active : inactive)}
         >
           <Music2 size={18} />
-          Quick Practice
+          Payment
         </NavLink>
 
-        <div>
-          <NavLink
-            to="/dashboard/project"
-            end
-            onClick={toggleCoursesActive}
-            className={({ isActive }) => (isActive ? active : inactive)}
-          >
-            <Tv size={18} />
-            Project Hub
-            <span className="">
-              {isCoursesActive ? (
-                <ChevronUp size={18} color="green" />
-              ) : (
-                <ChevronDown size={18} color="green" />
-              )}
-            </span>
-          </NavLink>
-          {isCoursesActive && (
-            <ul className="mt-2 list-disc space-y-2">
-              <li>
-                <NavLink
-                  to="/dashboard/project/submit-project"
-                  className={({ isActive }) =>
-                    isActive ? dropactive : dropinactive
-                  }
-                >
-                  Submit Project
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/dashboard/project/project-result"
-                  className={({ isActive }) =>
-                    isActive ? dropactive : dropinactive
-                  }
-                >
-                  Result
-                </NavLink>
-              </li>
-            </ul>
-          )}
-        </div>
-
         <NavLink
-          to="/dashboard/schedule"
+          to="/dashboard/private-policy"
           className={({ isActive }) => (isActive ? active : inactive)}
         >
           <Clock5 size={18} />
-          Schedule
+          Private Policy
         </NavLink>
         <div className={`${isCoursesActive ? "mt-1" : "mt-24"} py-1`}>
           <NavLink

@@ -53,7 +53,7 @@ export default function Verify() {
           ))}
         </div>
 
-        <Link to="/VerifySuccesful">
+        <Link to="/verify-succesful">
           <button
             onClick={handleVerify}
             className="w-full rounded bg-green-700 py-2 font-medium text-white hover:bg-green-800"
