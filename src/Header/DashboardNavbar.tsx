@@ -1,5 +1,5 @@
 import { Search, Settings, Bell, AlignJustify } from "lucide-react";
-import { slide1 } from "../assets";
+import { profile } from "../assets";
 
 const DashboardNavbar = () => {
   return (
@@ -15,7 +15,7 @@ const DashboardNavbar = () => {
           <input
             type="text"
             className="block w-full rounded-lg border border-black bg-inherit px-2.5 py-[6px] ps-10 text-base text-black shadow-none outline-none focus:border-black focus:ring-0 md:w-[85%] lg:w-[70%]"
-            placeholder="Search for anything"
+            placeholder="Search for Location"
           />
         </div>
       </div>
@@ -26,7 +26,7 @@ const DashboardNavbar = () => {
         </div>
         <div className="flex items-center gap-x-3">
           <div className="size-12 rounded-full ">
-            <img src={slide1} alt="profile" className="w-full rounded-full" />
+            <img src={profile} alt="profile" className="w-full rounded-full" />
           </div>
           <div className="">
             <h2 className="font-bold">ADEDEJI ALLI</h2>
