@@ -8,7 +8,7 @@ export default function LocationSuccesful() {
   useEffect(() => {
     const timer = setTimeout(() => {
       navigate("/dashboard");
-    }, 3000); // 3 seconds delay
+    }, 2000); // 3 seconds delay
 
     return () => clearTimeout(timer);
   }, [navigate]);

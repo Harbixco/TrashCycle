@@ -12,6 +12,8 @@ import slide11 from "./Images/slide11.svg";
 import facebook from "./Images/facebook.svg";
 import twitter from "./Images/twitter.svg";
 import google from "./Images/google.svg";
+import profile from "./Images/profile.jpg";
+import progressIcon from "./Images/progressIcon.svg";
 
 export {
   slide1,
@@ -28,4 +30,6 @@ export {
   facebook,
   twitter,
   google,
+  profile,
+  progressIcon,
 };
