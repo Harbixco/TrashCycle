@@ -72,7 +72,7 @@ export const picksup = [
     id: 4,
     name: "Ibrahim Fatimah",
     address: "white house road, paris",
-    Status: "Sucesful",
+    Status: "Succesful",
     comment: "You did a nice job",
   },
   {

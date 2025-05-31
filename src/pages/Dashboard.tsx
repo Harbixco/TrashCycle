@@ -1,5 +1,5 @@
 import { profileDetail } from "../DummyData";
-import { CalendarCompo, Time } from "../common";
+import { CalendarCompo } from "../common";
 export default function Dashboard() {
   return (
     <div className="flex w-full flex-col items-start justify-between gap-y-6 md:flex-row md:gap-y-0 ">

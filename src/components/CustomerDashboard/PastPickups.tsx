@@ -1,7 +1,7 @@
 import { Table, TableBody, TableCell, TableRow } from "flowbite-react";
 import { picksup } from "../../DummyData";
 
-export function PastPickups() {
+export default function PastPickups() {
   return (
     <>
       <div className="flex items-center justify-center bg-white py-4">
@@ -14,14 +14,13 @@ export function PastPickups() {
         <Table>
           <TableBody className="divide-y">
             <TableRow className="bg-white font-semibold">
-              <TableCell className="whitespace-nowrap  text-gray-900 dark:text-white">
+              <TableCell className="whitespace-nowrap  text-gray-900 dark:text-white" key="id">
                 ID
               </TableCell>
               <TableCell>NAME</TableCell>
               <TableCell>ADDRESS</TableCell>
               <TableCell>STATUS</TableCell>
               <TableCell> COMMENT</TableCell>
-              
             </TableRow>
 
             {picksup.map((data, index) => {
