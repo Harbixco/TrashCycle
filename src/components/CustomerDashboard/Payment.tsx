@@ -1,7 +1,7 @@
 import { Table, TableBody, TableCell, TableRow } from "flowbite-react";
 import { PaymentDetails } from "../../DummyData";
 
-export function Payment() {
+export default function Payment() {
   return (
     <>
       <div className="flex items-center justify-center bg-white py-4">
@@ -14,7 +14,7 @@ export function Payment() {
         <Table>
           <TableBody className="divide-y">
             <TableRow className="bg-white font-semibold">
-              <TableCell className="whitespace-nowrap  text-gray-900 dark:text-white">
+              <TableCell className="whitespace-nowrap  text-gray-900 dark:text-white" key="id">
                 ID
               </TableCell>
               <TableCell>NAME</TableCell>
