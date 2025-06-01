@@ -1,4 +1,4 @@
-import { profile } from "../assets";
+import { profile, slide12, slide13, slide14 } from "../assets";
 
 export const profileDetail = {
   name: "Adedeji",
@@ -83,3 +83,36 @@ export const picksup = [
     comment: "You did a great job",
   },
 ];
+
+export const selectTruck = [
+  {
+    id: "small",
+    name: "Small Truck",
+    price: "$10",
+    weight: "0-30Kg",
+    icon: slide12,
+  },
+  {
+    id: "lorry",
+    name: "Lorry Truck",
+    price: "$20",
+    weight: "25-50Kg",
+    icon: slide13,
+  },
+  {
+    id: "compact",
+    name: "Compact Truck",
+    price: "$30",
+    weight: "50-100Kg",
+    icon: slide14,
+  },
+];
+
+export const selectDetails = {
+  address:
+    "Mr Daniel Izuchukwu Nwoye. 8, My Street, Illassan Lekki, Lagos 105102.",
+  name: "Solid Rubbish",
+  kg: "20Kg",
+  truck: "Small Truck",
+  amount: "$10",
+};

@@ -9,6 +9,9 @@ import slide8 from "./Images/slide8.svg";
 import slide9 from "./Images/slide9.svg";
 import slide10 from "./Images/slide10.svg";
 import slide11 from "./Images/slide11.svg";
+import slide12 from "./Images/slide12.svg";
+import slide13 from "./Images/slide13.svg";
+import slide14 from "./Images/slide14.svg";
 import facebook from "./Images/facebook.svg";
 import twitter from "./Images/twitter.svg";
 import google from "./Images/google.svg";
@@ -27,6 +30,9 @@ export {
   slide9,
   slide10,
   slide11,
+  slide12,
+  slide13,
+  slide14,
   facebook,
   twitter,
   google,

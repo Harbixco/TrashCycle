@@ -30,7 +30,7 @@ export default function Signup() {
             className="w-full rounded-md border border-green-700 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
           />
           <Link to="/verify">
-            <button className="mt-5 w-full rounded-md bg-green-800 py-2 text-white hover:bg-green-700">
+            <button className="mt-5 w-full rounded-md bg-adminPrimary py-2 text-white hover:bg-green-700">
               Register
             </button>
           </Link>

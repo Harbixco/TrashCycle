@@ -22,7 +22,7 @@ const Studentsidebar = () => {
 
   return (
     <div className="h-screen w-full shadow">
-      <div className="mx-auto w-[92%] bg-[#27662A] py-4">
+      <div className="mx-auto w-[92%] bg-adminPrimary py-4">
         <Link to="/">
           <img src={slide1} alt="logo" />
         </Link>
@@ -44,6 +44,7 @@ const Studentsidebar = () => {
           <ClipboardList size={18} />
           Schedule Pickups
         </NavLink>
+        
         <NavLink
           to="/dashboard/past-pickups"
           className={({ isActive }) => (isActive ? active : inactive)}

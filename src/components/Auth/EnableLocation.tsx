@@ -16,7 +16,7 @@ export default function EnableLocation() {
       <div>
         <button
           type="button"
-          className="mt-4 w-48 rounded-md bg-green-800 py-1.5 text-white hover:bg-green-700"
+          className="mt-4 w-48 rounded-md bg-adminPrimary py-1.5 text-white hover:bg-green-700"
         >
           <Link to="/location-succesful">Enable</Link>
         </button>

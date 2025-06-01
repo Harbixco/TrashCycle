@@ -1,30 +1,27 @@
 import { progressIcon } from "../../assets";
-import { PickCalendar, Time } from "../../common";
+import DateAndTime from "../Scedule-pickup/DateAndTime";
+import SelectAddress from "../Scedule-pickup/SelectAddress";
 
 export default function SchedulePickups() {
   return (
     <div>
       <div className="bg-white px-4">
-        <div className="w-full max-w-sm space-y-6">
-          <div className="">
-            <div className="text-2xl font-semibold">Schedule PickUps</div>
-            <div className="pl-7">
+        <div className="flex items-center justify-center">
+          <div className="mb-5 w-full">
+            <p className="pb-2 text-center text-2xl font-semibold">
+              Schedule PickUps
+            </p>
+            <div className="mx-auto block w-20">
               <img src={progressIcon} alt="" />
             </div>
           </div>
+        </div>
+        <div>
+          <DateAndTime />
+        </div>
 
-          <div className="flex justify-between">
-            <div>
-              <div>Pick a Day</div>
-              <div>
-                <PickCalendar />
-              </div>
-            </div>
-
-            <div>
-              <Time />
-            </div>
-          </div>
+        <div>
+          <SelectAddress />
         </div>
       </div>
     </div>
