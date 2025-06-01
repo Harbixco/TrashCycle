@@ -11,12 +11,6 @@ export default function Time() {
 
   return (
     <form className="mx-auto max-w-32">
-      <label
-        htmlFor="time"
-        className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-      >
-        Select time:
-      </label>
       <div className="relative">
         <div className="pointer-events-none absolute inset-y-0 end-0 flex items-center pe-3.5">
           <svg

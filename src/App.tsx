@@ -41,6 +41,7 @@ import {
   Support,
   Logout,
   LocationSuccesful,
+  SuccesfulAddress,
 } from "./components";
 
 import { Dashboard, DashboardLayout } from "./pages";
@@ -136,14 +137,7 @@ function App() {
       path: "/thank-you",
       element: <ThankYou />,
     },
-    {
-      path: "/payment-methods",
-      element: <PaymentMethods />,
-    },
-    {
-      path: "/select-truck",
-      element: <SelectTruck />,
-    },
+
     {
       path: "/select-address",
       element: <SelectAddress />,
@@ -164,18 +158,7 @@ function App() {
       path: "/upload-waste",
       element: <UploadWaste />,
     },
-    {
-      path: "/select-waste-type",
-      element: <SelectWasteType />,
-    },
-    {
-      path: "/add-address",
-      element: <AddAddress />,
-    },
-    {
-      path: "/booking-summary",
-      element: <BookingSummary />,
-    },
+
     {
       path: "/date-and-time",
       element: <DateAndTime />,
@@ -208,6 +191,39 @@ function App() {
         {
           path: "/dashboard/schedule-pickups",
           element: <SchedulePickups />,
+        },
+        {
+          path: "/dashboard/add-address",
+          element: <AddAddress />,
+        },
+        {
+          path: "/dashboard/succesful-address",
+          element: <SuccesfulAddress />,
+        },
+
+        {
+          path: "/dashboard/select-waste-type",
+          element: <SelectWasteType />,
+        },
+        {
+          path: "/dashboard/select-truck",
+          element: <SelectTruck />,
+        },
+        {
+          path: "/dashboard/booking-summary",
+          element: <BookingSummary />,
+        },
+        {
+          path: "/dashboard/payment-methods",
+          element: <PaymentMethods />,
+        },
+        {
+          path: "/dashboard/succesful-payment",
+          element: <SuccesfulPayment />,
+        },
+        {
+          path: "/dashboard/succesful-upload",
+          element: <SuccesfulUpload />,
         },
         {
           path: "/dashboard/setting",

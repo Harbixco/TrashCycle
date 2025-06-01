@@ -29,7 +29,7 @@ export default function Login() {
           </div>
 
           <Link to="/dashboard">
-            <button className="w-full rounded-md bg-green-800 py-2 text-white hover:bg-green-700">
+            <button className="w-full rounded-md bg-adminPrimary py-2 text-white hover:bg-green-700">
               Log In
             </button>
           </Link>
