@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 export default function Time() {
   const [time, setTime] = useState("09:00"); // default within allowed range

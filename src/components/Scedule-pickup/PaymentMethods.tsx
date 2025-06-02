@@ -1,5 +1,5 @@
 /* eslint-disable tailwindcss/no-custom-classname */
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { MoveLeft } from "lucide-react";
 
@@ -10,25 +10,25 @@ export default function PaymentMethods() {
     setSelectedPaymentMethod(methodId);
   };
 
-  const handleGoBack = () => {
-    console.log("Navigating back...");
-    // Implement your actual navigation logic here
-  };
+  // const handleGoBack = () => {
+  //   console.log("Navigating back...");
+  //   // Implement your actual navigation logic here
+  // };
 
   const handleAddDebitCard = () => {
     console.log("Opening Add Debit Card screen...");
     // Implement navigation to a new screen for adding a card
   };
 
-  const handleMakePayment = () => {
-    if (selectedPaymentMethod) {
-      console.log("Making payment with:", selectedPaymentMethod);
-      alert(`Payment initiated with ${selectedPaymentMethod}!`);
-      // Implement your payment processing logic here
-    } else {
-      alert("Please select a payment method.");
-    }
-  };
+  // const handleMakePayment = () => {
+  //   if (selectedPaymentMethod) {
+  //     console.log("Making payment with:", selectedPaymentMethod);
+  //     alert(`Payment initiated with ${selectedPaymentMethod}!`);
+  //     // Implement your payment processing logic here
+  //   } else {
+  //     alert("Please select a payment method.");
+  //   }
+  // };
 
   return (
     <>

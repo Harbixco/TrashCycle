@@ -1,6 +1,6 @@
 export { default as EnableLocation } from "./Auth/EnableLocation";
 export { default as Login } from "./Auth/Login";
-export { default as Signup } from "./Auth/Signup";
+export { default as Signup } from "./Auth/loginAuth/Signup";
 export { default as VerifySuccesful } from "./Auth/VerifySuccesful";
 export { default as Verify } from "./Auth/Verify";
 export { default as Welcome } from "./Auth/Welcome";
@@ -36,7 +36,10 @@ export { default as PastPickups } from "./CustomerDashboard/PastPickups";
 export { default as Payment } from "./CustomerDashboard/Payment";
 export { default as PrivatePolicy } from "./CustomerDashboard/PrivatePolicy";
 export { default as SchedulePickups } from "./CustomerDashboard/SchedulePickups";
-export { default as Settings } from "./CustomerDashboard/Settings";
 export { default as Support } from "./CustomerDashboard/Support";
-export {default as Logout } from "./CustomerDashboard/Logout"
-export {default as LocationSuccesful } from "./Auth/LocationSuccesful"
+export { default as Logout } from "./CustomerDashboard/Logout";
+export { default as LocationSuccesful } from "./Auth/LocationSuccesful";
+export { default as SettingLayout } from "./SettingsDashboard/SettingLayout";
+export { default as Setting } from "./SettingsDashboard/Setting";
+export { default as Settingchangepassword } from "./SettingsDashboard/ChangePassword";
+export { default as Settingnotification } from "./SettingsDashboard/SettingNofitication";

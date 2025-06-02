@@ -1,5 +1,5 @@
 /* eslint-disable tailwindcss/no-custom-classname */
-import React, { useState } from "react";
+import { useState } from "react";
 import { selectTruck } from "../../DummyData";
 import { Link } from "react-router-dom";
 import { MoveLeft, MapPin, Clock } from "lucide-react";
@@ -11,20 +11,20 @@ export default function SelectTruck() {
     setSelectedTruck(truckType);
   };
 
-  const handleGoBack = () => {
-    console.log("Navigating back...");
-    // Implement your navigation logic here, e.g., using React Router's history.goBack()
-  };
+  // const handleGoBack = () => {
+  //   console.log("Navigating back...");
+  //   // Implement your navigation logic here, e.g., using React Router's history.goBack()
+  // };
 
-  const handleConfirmPickup = () => {
-    if (selectedTruck) {
-      console.log("Pickup Confirmed for:", selectedTruck);
-      alert(`Pickup Confirmed for ${selectedTruck} truck!`);
-      // You would typically send this data to a backend or state management
-    } else {
-      alert("Please select a truck type.");
-    }
-  };
+  // const handleConfirmPickup = () => {
+  //   if (selectedTruck) {
+  //     console.log("Pickup Confirmed for:", selectedTruck);
+  //     alert(`Pickup Confirmed for ${selectedTruck} truck!`);
+  //     // You would typically send this data to a backend or state management
+  //   } else {
+  //     alert("Please select a truck type.");
+  //   }
+  // };
 
   return (
     <>

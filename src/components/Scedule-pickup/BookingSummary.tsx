@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { MoveLeft } from "lucide-react";
 
 export default function BookingSummary() {
-  const handleGoBack = () => {
-    console.log("Navigating back...");
-    // Implement your navigation logic here (e.g., history.goBack())
-  };
+  // const handleGoBack = () => {
+  //   console.log("Navigating back...");
+  //   // Implement your navigation logic here (e.g., history.goBack())
+  // };
 
   const handleEditAddress = () => {
     console.log("Editing Pickup Address...");
