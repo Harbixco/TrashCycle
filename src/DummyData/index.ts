@@ -58,7 +58,7 @@ export const picksup = [
     id: 2,
     name: "Adebayo Kadijat",
     address: "3b, airport road, New Jersey",
-    Status: "Sucesful",
+    Status: "succesful",
     comment: "You did a topnotch service",
   },
   {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { SetStateAction, useState } from "react";
 import { Link } from "react-router-dom";
 import { MoveLeft } from "lucide-react";
 import UploadWaste from "./UploadWaste";
@@ -7,35 +7,39 @@ export default function SelectWasteType() {
   const [wasteType, setWasteType] = useState("");
   const [wasteKg, setWasteKg] = useState("");
 
-  const handleWasteTypeChange = (e) => {
+  const handleWasteTypeChange = (e: {
+    target: { value: SetStateAction<string> };
+  }) => {
     setWasteType(e.target.value);
   };
 
-  const handleWasteKgChange = (e) => {
+  const handleWasteKgChange = (e: {
+    target: { value: SetStateAction<string> };
+  }) => {
     setWasteKg(e.target.value);
   };
 
-  const handleGoBack = () => {
-    console.log("Navigating back...");
-    // Implement your navigation logic here, e.g., using React Router's history.goBack()
-  };
+  // const handleGoBack = () => {
+  //   console.log("Navigating back...");
+  //   // Implement your navigation logic here, e.g., using React Router's history.goBack()
+  // };
 
-  const handleUploadImage = () => {
-    console.log("Open image upload dialog...");
-    // Implement your image upload logic here
-  };
+  // const handleUploadImage = () => {
+  //   console.log("Open image upload dialog...");
+  //   // Implement your image upload logic here
+  // };
 
-  const handleSaveAddress = (e) => {
-    e.preventDefault();
-    const formData = {
-      wasteType,
-      wasteKg,
-      // You might add image data here if uploaded
-    };
-    console.log("Form data submitted:", formData);
-    alert("Form Submitted! Check console for data.");
-    // In a real application, you would send this data to a backend or state management
-  };
+  // const handleSaveAddress = (e) => {
+  //   e.preventDefault();
+  //   const formData = {
+  //     wasteType,
+  //     wasteKg,
+  //     // You might add image data here if uploaded
+  //   };
+  //   console.log("Form data submitted:", formData);
+  //   alert("Form Submitted! Check console for data.");
+  //   // In a real application, you would send this data to a backend or state management
+  // };
 
   return (
     <>

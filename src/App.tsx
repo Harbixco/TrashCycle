@@ -37,11 +37,14 @@ import {
   Payment,
   PrivatePolicy,
   SchedulePickups,
-  Settings,
   Support,
   Logout,
   LocationSuccesful,
   SuccesfulAddress,
+  SettingLayout,
+  Setting,
+  Settingchangepassword,
+  Settingnotification,
 } from "./components";
 
 import { Dashboard, DashboardLayout } from "./pages";
@@ -225,10 +228,26 @@ function App() {
           path: "/dashboard/succesful-upload",
           element: <SuccesfulUpload />,
         },
+
         {
           path: "/dashboard/setting",
-          element: <Settings />,
+          element: <SettingLayout />,
+          children: [
+            {
+              index: true,
+              element: <Setting />,
+            },
+            {
+              path: "/dashboard/setting/change-password",
+              element: <Settingchangepassword />,
+            },
+            {
+              path: "/dashboard/setting/notification",
+              element: <Settingnotification />,
+            },
+          ],
         },
+
         {
           path: "/dashboard/Support",
           element: <Support />,
