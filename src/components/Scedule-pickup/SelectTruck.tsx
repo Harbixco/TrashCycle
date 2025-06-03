@@ -1,13 +1,13 @@
 /* eslint-disable tailwindcss/no-custom-classname */
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import { selectTruck } from "../../DummyData";
 import { Link } from "react-router-dom";
 import { MoveLeft, MapPin, Clock } from "lucide-react";
 
 export default function SelectTruck() {
-  const [selectedTruck, setSelectedTruck] = useState(null); // 'small', 'lorry', 'compact'
+  const [selectedTruck, setSelectedTruck] = useState<string | null>(null);
 
-  const handleTruckSelection = (truckType) => {
+  const handleTruckSelection = (truckType: SetStateAction<string | null>) => {
     setSelectedTruck(truckType);
   };
 

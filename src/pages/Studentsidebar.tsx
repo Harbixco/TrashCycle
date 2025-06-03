@@ -13,7 +13,7 @@ import {
 import { useState } from "react";
 
 const Studentsidebar = () => {
-  const [isCoursesActive, setIsCoursesActive] = useState(false);
+  const [isCoursesActive] = useState(false);
 
   const active =
     "bg-adminPrimary flex w-full items-center gap-x-3 py-1 pl-2 text-white mb-2";
@@ -44,7 +44,7 @@ const Studentsidebar = () => {
           <ClipboardList size={18} />
           Schedule Pickups
         </NavLink>
-        
+
         <NavLink
           to="/dashboard/past-pickups"
           className={({ isActive }) => (isActive ? active : inactive)}
