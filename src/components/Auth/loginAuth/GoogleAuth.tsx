@@ -1,5 +1,5 @@
 import { google } from "../../../assets";
-import { auth, googleProvider } from "../../../config/firebase.js";
+import { auth, googleProvider } from "./config/firebase";
 import { signInWithPopup } from "firebase/auth";
 
 export default function GoogleAuth() {
@@ -7,7 +7,7 @@ export default function GoogleAuth() {
   const signinWithGoogle = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
-      console.log("succesfully Login")
+      console.log("succesfully Login");
     } catch (err) {
       console.log(err);
     }

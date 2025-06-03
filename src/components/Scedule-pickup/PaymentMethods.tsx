@@ -1,12 +1,16 @@
 /* eslint-disable tailwindcss/no-custom-classname */
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import { Link } from "react-router-dom";
 import { MoveLeft } from "lucide-react";
 
 export default function PaymentMethods() {
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null); // e.g., 'google-pay', 'card-4657', 'cash-money'
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<
+    string | null
+  >(null);
 
-  const handlePaymentMethodSelect = (methodId) => {
+  const handlePaymentMethodSelect = (
+    methodId: SetStateAction<string | null>,
+  ) => {
     setSelectedPaymentMethod(methodId);
   };
 

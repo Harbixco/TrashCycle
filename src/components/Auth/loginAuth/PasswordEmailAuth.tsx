@@ -1,8 +1,8 @@
-import { auth } from "../../../config/firebase.js";
+import { auth } from "./config/firebase.ts";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
-import { db } from "../../../config/firebase.js";
+import { db } from "./config/firebase.ts";
 import { useNavigate } from "react-router-dom";
 
 export default function PasswordEmailAuth() {
