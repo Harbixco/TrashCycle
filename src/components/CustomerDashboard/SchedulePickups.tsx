@@ -8,11 +8,11 @@ export default function SchedulePickups() {
       <div className="bg-white px-4">
         <div className="flex items-center justify-center">
           <div className="mb-5 w-full">
-            <p className="pb-2 text-center text-2xl font-semibold">
+            <p className="pb-2 pt-7 text-center text-xl font-semibold md:pt-0 md:text-2xl">
               Schedule PickUps
             </p>
             <div className="mx-auto block w-20">
-              <img src={progressIcon} alt="" />
+              <img src={progressIcon} alt="progress icon" />
             </div>
           </div>
         </div>

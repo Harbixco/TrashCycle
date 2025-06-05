@@ -36,25 +36,23 @@ export default function PaymentMethods() {
 
   return (
     <>
-      <div className="flex items-center pl-48 pt-10">
-        {/* Header */}
-        <div className="flex items-center border-gray-200 p-4">
-          {/* Back arrow icon */}
-          <Link to="/dashboard/booking-summary">
-            <button>
-              <MoveLeft />
-            </button>
-          </Link>
+      {/* Header */}
+      <div className="flex items-center pl-6 pt-10 md:pl-48">
+        {/* Back arrow icon */}
+        <Link to="/dashboard/booking-summary">
+          <button>
+            <MoveLeft />
+          </button>
+        </Link>
 
-          <h1 className="pl-48 text-xl font-semibold text-gray-900">
-            PAYMENT METHODS
-          </h1>
-        </div>
+        <h1 className="pl-20 font-semibold text-gray-900 md:pl-48 md:text-xl">
+          PAYMENT METHODS
+        </h1>
       </div>
 
-      <div className="mx-auto flex min-h-screen w-2/3 flex-col bg-white font-sans">
+      <div className="mx-auto flex min-h-screen flex-col bg-white font-sans md:w-2/3">
         {/* Main Content Area */}
-        <div className="grow space-y-4 p-6">
+        <div className="space-y-4 p-6">
           <p className="mb-4 text-base text-gray-600">
             Select the payment method you want to use
           </p>

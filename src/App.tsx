@@ -5,18 +5,9 @@ import {
   Signup,
   VerifySuccesful,
   Verify,
-  Welcome,
   CancelOption,
   CancelPickup,
   Splash,
-  EditProfile,
-  ChangePassword,
-  Faqs,
-  HelpCenter,
-  Home,
-  Pickups,
-  PrivacyPolicy,
-  ProfileDetails,
   Experience,
   ThankYou,
   PaymentMethods,
@@ -84,10 +75,6 @@ function App() {
       path: "/verify",
       element: <Verify />,
     },
-    {
-      path: "/welcome",
-      element: <Welcome />,
-    },
 
     {
       path: "/cancel-option",
@@ -96,40 +83,6 @@ function App() {
     {
       path: "/cancel-pickup",
       element: <CancelPickup />,
-    },
-
-    {
-      path: "/edit-profile",
-      element: <EditProfile />,
-    },
-    {
-      path: "/change-password",
-      element: <ChangePassword />,
-    },
-    {
-      path: "/faqs",
-      element: <Faqs />,
-    },
-    {
-      path: "/help-center",
-      element: <HelpCenter />,
-    },
-
-    {
-      path: "/home",
-      element: <Home />,
-    },
-    {
-      path: "/pick-ups",
-      element: <Pickups />,
-    },
-    {
-      path: "/privacy-policy",
-      element: <PrivacyPolicy />,
-    },
-    {
-      path: "/profile-details",
-      element: <ProfileDetails />,
     },
     {
       path: "/experience",
