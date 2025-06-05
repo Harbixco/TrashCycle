@@ -7,14 +7,14 @@ export default function SelectAddress() {
 
   return (
     <>
-      <div className="pt-8 text-center text-lg font-semibold">
+      <div className="text-x1 pt-8 text-center font-semibold md:text-lg">
         SELECT YOUR LOCATION
       </div>
       <div className="min-h-screen w-full p-4 font-sans sm:p-6 md:pl-72">
         {/* Add Address Button */}
 
         <Link to="/dashboard/add-address">
-          <button className="mb-8 flex w-96 items-center justify-center space-x-2 rounded-lg border-2 border-green-700 py-3 font-semibold text-green-700">
+          <button className="mb-8 flex w-80 items-center justify-center space-x-2 rounded-lg border-2 border-green-700 py-3 font-semibold text-green-700 md:w-96">
             <span className="text-2xl">+</span>
             <span>Add Address</span>
           </button>
@@ -30,7 +30,7 @@ export default function SelectAddress() {
           <label
             htmlFor="homeAddress"
             className={`
-            block w-96 cursor-pointer rounded-lg bg-white p-4 shadow-sm
+            block w-80 cursor-pointer rounded-lg bg-white p-4 shadow-sm md:w-96
             ${selectedAddress === "home" ? "border-2 border-green-600" : "border border-gray-200"}
             transition-all duration-200 ease-in-out hover:shadow-md
           `}
@@ -58,7 +58,7 @@ export default function SelectAddress() {
           <label
             htmlFor="officeAddress"
             className={`
-            block w-96 cursor-pointer rounded-lg bg-white p-4 shadow-sm
+            block w-80 cursor-pointer rounded-lg bg-white p-4 shadow-sm md:w-96
             ${selectedAddress === "office" ? "border-2 border-green-600" : "border border-gray-200"}
             transition-all duration-200 ease-in-out hover:shadow-md
           `}
@@ -85,7 +85,7 @@ export default function SelectAddress() {
 
         <div className="mt-8">
           <Link to="/dashboard/select-waste-type">
-            <button className="w-96 rounded-lg bg-adminPrimary py-3 font-semibold text-white transition-colors duration-200 hover:bg-green-800">
+            <button className="w-80 rounded-lg bg-adminPrimary py-3 font-semibold text-white transition-colors duration-200 hover:bg-green-800 md:w-96">
               Continue
             </button>
           </Link>

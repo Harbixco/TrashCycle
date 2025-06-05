@@ -1,42 +1,38 @@
-import { SetStateAction, useState } from "react";
 import { Link } from "react-router-dom";
 import { MoveLeft } from "lucide-react";
+import { useState } from "react";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../Auth/loginAuth/config/firebase";
 
 export default function AddAddress() {
-  const [formData, setFormData] = useState({
-    sector: "",
-    street: "",
-    state: "",
-    city: "",
-  });
+  //CREATE NEW MOVIE DATA FOR DATABASE AND ALSO AUTHETICATE EMAIL AND PASSWORD
+  const [venue, setVenue] = useState("");
+  const [address, setAddress] = useState("");
+  const [state, setState] = useState("");
+  const [city, setCity] = useState("");
 
-  const handleChange = (e: { target: { name: any; value: any } }) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+  const userCollectionRef = collection(db, "houseAddress");
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    console.log("Address saved:", formData);
-    // In a real application, you would send this data to a backend or state management
-    alert("Address Saved! Check console for data.");
-  };
+  const onSubmit = async () => {
+    try {
+      //BUTTON TO CREATE NEW MOVIE DATA IN DATABASE
+      await addDoc(userCollectionRef, {
+        venue,
+        address,
+        state,
+        city,
+      });
 
-  const [wasteType, setWasteType] = useState("");
-
-  const handleWasteTypeChange = (e: {
-    target: { value: SetStateAction<string> };
-  }) => {
-    setWasteType(e.target.value);
+      console.log("Succssful");
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
     <>
       {/* Header */}
-      <div className="flex items-center pl-48 pt-10">
+      <div className="flex items-center pl-6 pt-10 md:pl-48">
         {/* Back arrow icon (using a simple SVG, you might use an icon library) */}
 
         <Link to="/dashboard/schedule-pickups">
@@ -45,13 +41,13 @@ export default function AddAddress() {
           </button>
         </Link>
 
-        <h1 className="pl-48 text-xl font-semibold text-gray-900">
+        <h1 className="pl-20 font-semibold text-gray-900 md:pl-48 md:text-xl">
           ADD RESIDENT DETAILS
         </h1>
       </div>
-      <div className="mx-auto flex min-h-screen w-2/3 flex-col bg-white font-sans">
+      <div className="mx-auto flex min-h-screen flex-col bg-white font-sans md:w-2/3">
         {/* Form Fields */}
-        <form onSubmit={handleSubmit} className="grow space-y-6 p-6">
+        <form className="grow space-y-6 p-6">
           {/* Input Field: Name & Number of Street */}
 
           <div className="relative">
@@ -64,15 +60,16 @@ export default function AddAddress() {
             <select
               id="wasteType"
               name="wasteType"
-              value={wasteType}
-              onChange={handleWasteTypeChange}
+              onChange={(e) => setVenue(e.target.value)}
               className="w-full cursor-pointer appearance-none rounded-lg border border-gray-300 bg-white p-3 text-gray-900 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="" disabled>
                 -Select
               </option>
-              <option value="residential">Home</option>
-              <option value="commercial">Office</option>
+              <option value="Home">Home</option>
+              <option value="Office">Office</option>
+              <option value="Open space">Open space</option>
+              <option value="Others">Others</option>
             </select>
             {/* Custom dropdown arrow */}
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -97,8 +94,7 @@ export default function AddAddress() {
               type="text"
               id="street"
               name="street"
-              value={formData.street}
-              onChange={handleChange}
+              onChange={(e) => setAddress(e.target.value)}
               className="w-full rounded-lg border border-gray-300 p-3 text-gray-900 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="e.g. Number 56 Golden Street"
             />
@@ -116,8 +112,7 @@ export default function AddAddress() {
               type="text"
               id="apartment"
               name="apartment"
-              value={formData.state}
-              onChange={handleChange}
+              onChange={(e) => setState(e.target.value)}
               className="w-full rounded-lg border border-gray-300 p-3 text-gray-900 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="e.g. Ekiti"
             />
@@ -135,8 +130,7 @@ export default function AddAddress() {
               type="text"
               id="city"
               name="city"
-              value={formData.city}
-              onChange={handleChange}
+              onChange={(e) => setCity(e.target.value)}
               className="w-full rounded-lg border border-gray-300 p-3 text-gray-900 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="e.g. Ilawe Ekiti"
             />
@@ -149,6 +143,7 @@ export default function AddAddress() {
           <Link to="/dashboard/succesful-address">
             <button
               type="submit"
+              onClick={onSubmit}
               className="mt-6 w-full rounded-lg bg-adminPrimary py-3 font-semibold text-white transition-colors duration-200 hover:bg-green-800"
             >
               Save Address

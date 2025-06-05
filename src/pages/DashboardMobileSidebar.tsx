@@ -49,7 +49,7 @@ const DashboardMobileSidebar: React.FC<AdminMobileSidebarProps> = ({
           to="/dashboard"
           end
           className={({ isActive }) => (isActive ? active : inactive)}
-           onClick={handleLinkClick}
+          onClick={handleLinkClick}
         >
           <LayoutDashboard size={18} />
           Home
@@ -58,7 +58,7 @@ const DashboardMobileSidebar: React.FC<AdminMobileSidebarProps> = ({
         <NavLink
           to="/dashboard/schedule-pickups"
           className={({ isActive }) => (isActive ? active : inactive)}
-           onClick={handleLinkClick}
+          onClick={handleLinkClick}
         >
           <ClipboardList size={18} />
           Schedule Pickups
@@ -67,7 +67,7 @@ const DashboardMobileSidebar: React.FC<AdminMobileSidebarProps> = ({
         <NavLink
           to="/dashboard/past-pickups"
           className={({ isActive }) => (isActive ? active : inactive)}
-           onClick={handleLinkClick}
+          onClick={handleLinkClick}
         >
           <ChartLine size={18} />
           Past Pickups
@@ -75,7 +75,7 @@ const DashboardMobileSidebar: React.FC<AdminMobileSidebarProps> = ({
         <NavLink
           to="/dashboard/payment"
           className={({ isActive }) => (isActive ? active : inactive)}
-           onClick={handleLinkClick}
+          onClick={handleLinkClick}
         >
           <Music2 size={18} />
           Payment
@@ -84,7 +84,7 @@ const DashboardMobileSidebar: React.FC<AdminMobileSidebarProps> = ({
         <NavLink
           to="/dashboard/private-policy"
           className={({ isActive }) => (isActive ? active : inactive)}
-           onClick={handleLinkClick}
+          onClick={handleLinkClick}
         >
           <Clock5 size={18} />
           Private Policy
@@ -93,7 +93,7 @@ const DashboardMobileSidebar: React.FC<AdminMobileSidebarProps> = ({
           <NavLink
             to="/dashboard/setting"
             className={({ isActive }) => (isActive ? active : inactive)}
-             onClick={handleLinkClick}
+            onClick={handleLinkClick}
           >
             <Settings size={18} />
             Settings
@@ -101,7 +101,7 @@ const DashboardMobileSidebar: React.FC<AdminMobileSidebarProps> = ({
           <NavLink
             to="/dashboard/Support"
             className={({ isActive }) => (isActive ? active : inactive)}
-             onClick={handleLinkClick}
+            onClick={handleLinkClick}
           >
             <CircleHelp size={18} />
             Support & Help

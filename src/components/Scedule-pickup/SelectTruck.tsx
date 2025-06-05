@@ -1,52 +1,48 @@
 /* eslint-disable tailwindcss/no-custom-classname */
-import { SetStateAction, useState } from "react";
 import { selectTruck } from "../../DummyData";
 import { Link } from "react-router-dom";
 import { MoveLeft, MapPin, Clock } from "lucide-react";
+import { useState } from "react";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../Auth/loginAuth/config/firebase";
 
 export default function SelectTruck() {
-  const [selectedTruck, setSelectedTruck] = useState<string | null>(null);
+  const [truckSelection, setTruckSelection] = useState("");
 
-  const handleTruckSelection = (truckType: SetStateAction<string | null>) => {
-    setSelectedTruck(truckType);
+  const userCollectionRef = collection(db, "wasteTruck");
+
+  const onSubmit = async () => {
+    try {
+      //BUTTON TO CREATE NEW MOVIE DATA IN DATABASE
+      await addDoc(userCollectionRef, {
+        truckSelection,
+      });
+
+      console.log("Succssful");
+    } catch (err) {
+      console.log(err);
+    }
   };
-
-  // const handleGoBack = () => {
-  //   console.log("Navigating back...");
-  //   // Implement your navigation logic here, e.g., using React Router's history.goBack()
-  // };
-
-  // const handleConfirmPickup = () => {
-  //   if (selectedTruck) {
-  //     console.log("Pickup Confirmed for:", selectedTruck);
-  //     alert(`Pickup Confirmed for ${selectedTruck} truck!`);
-  //     // You would typically send this data to a backend or state management
-  //   } else {
-  //     alert("Please select a truck type.");
-  //   }
-  // };
 
   return (
     <>
-      <div className="flex items-center pl-48 pt-10">
-        {/* Header */}
-        <div className="flex items-center border-gray-200 p-4">
-          {/* Back arrow icon */}
-          <Link to="/dashboard/select-waste-type">
-            <button>
-              <MoveLeft />
-            </button>
-          </Link>
+      {/* Header */}
+      <div className="flex items-center pl-6 pt-10 md:pl-48">
+        {/* Back arrow icon */}
+        <Link to="/dashboard/select-waste-type">
+          <button>
+            <MoveLeft />
+          </button>
+        </Link>
 
-          <h1 className="pl-48 text-xl font-semibold text-gray-900">
-            SELECT TRUCK
-          </h1>
-        </div>
+        <h1 className="pl-20 font-semibold text-gray-900 md:pl-48 md:text-xl">
+          SELECT TRUCK
+        </h1>
       </div>
 
-      <div className="mx-auto flex min-h-screen w-2/3 flex-col bg-white font-sans">
+      <div className="mx-auto flex min-h-screen flex-col bg-white font-sans md:w-2/3">
         {/* Main Content */}
-        <div className="grow space-y-4 p-6">
+        <div className="space-y-4 p-6">
           <p className="mb-4 text-base text-gray-600">
             Select the truck type you want
           </p>
@@ -58,7 +54,7 @@ export default function SelectTruck() {
               htmlFor={truck.id}
               className={`
               flex cursor-pointer items-center justify-between rounded-lg bg-white p-4 shadow-sm
-              ${selectedTruck === truck.id ? "border-2 border-green-600" : "border border-gray-200"}
+              ${truckSelection === truck.id ? "border-2 border-green-600" : "border border-gray-200"}
               transition-all duration-200 ease-in-out hover:shadow-md
             `}
             >
@@ -82,9 +78,10 @@ export default function SelectTruck() {
                 type="radio"
                 id={truck.id}
                 name="truckType"
-                value={truck.id}
-                checked={selectedTruck === truck.id}
-                onChange={() => handleTruckSelection(truck.id)}
+                value={[
+                  `id: ${truck.id}, name: ${truck.name}, price: ${truck.price}, weight:${truck.weight}`,
+                ]}
+                onChange={(e) => setTruckSelection(e.target.value)}
                 className="form-radio size-5 border-gray-300 text-green-600 focus:ring-green-500"
               />
             </label>
@@ -92,26 +89,52 @@ export default function SelectTruck() {
         </div>
 
         {/* Fixed Bottom Section */}
-        <div className="sticky bottom-0 w-full bg-white">
-          <div className="mb-4 flex items-center justify-between">
-            <div className="flex items-center space-x-2 text-gray-700">
-              <MapPin />
-              <span>4.5Km</span>
+        <div className="ml-5 w-[370px] md:hidden">
+          <div className="sticky bottom-0 w-full bg-white">
+            <div className="mb-4 flex items-center justify-between">
+              <div className="flex items-center space-x-2 text-gray-700">
+                <MapPin />
+                <span>4.5Km</span>
+              </div>
+              <div className="flex items-center space-x-2 text-gray-700">
+                <Clock />
+                <span>5 Mins</span>
+              </div>
             </div>
-            <div className="flex items-center space-x-2 text-gray-700">
-              <Clock />
-              <span>5 Mins</span>
-            </div>
-          </div>
 
-          <Link to="/dashboard/succesful-upload">
-            <button
-              // onClick={handleConfirmPickup}
-              className="w-full rounded-lg bg-adminPrimary py-3 font-semibold text-white transition-colors duration-200 hover:bg-green-800"
-            >
-              Confirm Pickup
-            </button>
-          </Link>
+            <Link to="/dashboard/succesful-upload">
+              <button
+                onClick={onSubmit}
+                className="w-full rounded-lg bg-adminPrimary py-3 font-semibold text-white transition-colors duration-200 hover:bg-green-800"
+              >
+                Confirm Pickup
+              </button>
+            </Link>
+          </div>
+        </div>
+
+        <div className="hidden md:block">
+          <div className="sticky bottom-0 w-full bg-white">
+            <div className="mb-4 flex items-center justify-between">
+              <div className="flex items-center space-x-2 text-gray-700">
+                <MapPin />
+                <span>4.5Km</span>
+              </div>
+              <div className="flex items-center space-x-2 text-gray-700">
+                <Clock />
+                <span>5 Mins</span>
+              </div>
+            </div>
+
+            <Link to="/dashboard/succesful-upload">
+              <button
+                onClick={onSubmit}
+                className="w-full rounded-lg bg-adminPrimary py-3 font-semibold text-white transition-colors duration-200 hover:bg-green-800"
+              >
+                Confirm Pickup
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     </>
