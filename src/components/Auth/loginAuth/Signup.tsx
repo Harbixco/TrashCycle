@@ -5,7 +5,7 @@ import PasswordEmailAuth from "./PasswordEmailAuth.js";
 
 export default function Signup() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-white px-4">
+    <div className="mt-8 flex items-center justify-center bg-white px-4 md:mt-0 md:min-h-screen">
       <div className="w-full max-w-sm space-y-6">
         <h2 className="text-center text-2xl font-semibold text-black">
           Create an Account
