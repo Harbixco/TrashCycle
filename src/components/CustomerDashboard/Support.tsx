@@ -1,9 +1,12 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 export default function Support() {
   return (
     <div>
       <div className="bg-gray-100">
-        <div className="mx-auto max-w-5xl px-4">
-          <h1 className="text-3xl font-bold text-gray-900">Help & Support</h1>
+        <div className="mx-auto max-w-5xl px-4 pt-5 md:pt-0">
+          <h1 className="text-2xl font-bold text-gray-900 md:text-3xl">
+            Help & Support
+          </h1>
 
           <div className="grid justify-items-center">
             <h2 className="mb-6 mt-4 text-2xl font-semibold">

@@ -150,9 +150,6 @@ export default function SettingLayout() {
         <div className="mt-1 w-full rounded-xl">
           <Outlet />
         </div>
-        <div className="mt-1 w-full rounded-xl">
-          <Outlet />
-        </div>
       </div>
     </>
   );
