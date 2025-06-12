@@ -1,8 +1,8 @@
 import { auth } from "./config/firebase.ts";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "./config/firebase.ts";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function PasswordEmailAuth() {
@@ -11,11 +11,15 @@ export default function PasswordEmailAuth() {
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState(0);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const userCollectionRef = collection(db, "users");
   const navigate = useNavigate();
 
-  const onSubmit = async () => {
+  const onSubmit = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    setErrorMsg("");
+
     try {
       await createUserWithEmailAndPassword(auth, email, password);
 
@@ -29,11 +33,11 @@ export default function PasswordEmailAuth() {
 
       const timer = setTimeout(() => {
         navigate("/verify");
-      }, 2000); // 3 seconds delay
+      }, 2000);
 
       return () => clearTimeout(timer);
     } catch (err) {
-      console.log(err);
+      setErrorMsg("Email already used");
     }
   };
 
@@ -70,6 +74,7 @@ export default function PasswordEmailAuth() {
         >
           Register
         </button>
+        {errorMsg && <p style={{ color: "red" }}>{errorMsg}</p>}
       </div>
     </>
   );
