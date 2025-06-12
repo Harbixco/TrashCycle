@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { MoveLeft } from "lucide-react";
-import { useState } from "react";
+// import { useEffect, useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../Auth/loginAuth/config/firebase";
+import { useState } from "react";
 
 export default function AddAddress() {
   //CREATE NEW MOVIE DATA FOR DATABASE AND ALSO AUTHETICATE EMAIL AND PASSWORD
@@ -12,6 +13,23 @@ export default function AddAddress() {
   const [city, setCity] = useState("");
 
   const userCollectionRef = collection(db, "houseAddress");
+  // const [data, setData] = useState(null);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const res = await fetch(
+  //         "https://nigerian-states-and-lga.vercel.app/state/?name=lagos",
+  //       );
+  //       const json = await res.json();
+  //       setData(json);
+  //     } catch (err) {
+  //       console.error("Error fetching data:", err);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
 
   const onSubmit = async () => {
     try {
@@ -44,6 +62,8 @@ export default function AddAddress() {
         <h1 className="pl-20 font-semibold text-gray-900 md:pl-48 md:text-xl">
           ADD RESIDENT DETAILS
         </h1>
+
+        <div>{/* <pre>{JSON.stringify(data, null, 2)}</pre> */}</div>
       </div>
       <div className="mx-auto flex min-h-screen flex-col bg-white font-sans md:w-2/3">
         {/* Form Fields */}

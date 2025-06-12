@@ -1,10 +1,52 @@
 import { selectDetails } from "../../DummyData";
 import { Link } from "react-router-dom";
 import { MoveLeft } from "lucide-react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../Auth/loginAuth/config/firebase";
+import { useEffect, useState } from "react";
 
 export default function BookingSummary() {
+  const userCollectionRef = collection(db, "users");
+  // GET USER DATA FROM BACKEND
+  const [userList, setUserList] = useState<
+    {
+      id: string;
+      email?: string;
+      password?: string;
+      fullName?: string;
+      phoneNumber?: number;
+    }[]
+  >([]);
+
+  useEffect(() => {
+    const getUsersList = async () => {
+      try {
+        const data = await getDocs(userCollectionRef);
+        const filteredData = data.docs.map((docs) => ({
+          id: docs.id,
+          ...docs.data(),
+        }));
+        setUserList(filteredData);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    getUsersList();
+  }, []);
+
   return (
     <>
+      <div>
+        {userList.map((data) => (
+          <div key={data.id}>
+            <p>{data.fullName}</p>
+            <p>{data.email}</p>
+            <p>{data.phoneNumber}</p>
+            <p className="pb-4">{data.password}</p>
+          </div>
+        ))}
+      </div>
       {/* Header */}
       <div className="flex items-center pl-6 pt-10 md:pl-48">
         {/* Back arrow icon */}
@@ -14,11 +56,11 @@ export default function BookingSummary() {
           </button>
         </Link>
 
-         <h1 className="pl-20 font-semibold text-gray-900 md:pl-48 md:text-xl">
+        <h1 className="pl-20 font-semibold text-gray-900 md:pl-48 md:text-xl">
           BOOKING SUMMARY
         </h1>
       </div>
-       <div className="mx-auto flex min-h-screen flex-col bg-white font-sans md:w-2/3">
+      <div className="mx-auto flex min-h-screen flex-col bg-white font-sans md:w-2/3">
         {/* Main Content Area */}
         <div className="space-y-4 p-6">
           {/* Pickup Address Card */}
