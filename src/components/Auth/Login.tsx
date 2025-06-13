@@ -24,16 +24,9 @@ export default function Login() {
       const querySnapshot = await getDocs(testEmail);
 
       if (querySnapshot.empty) {
-        setErrorMsg("Email or password not correct");
+        setErrorMsg("Email or password incorrect");
         return;
       }
-
-      // const userDoc = querySnapshot.docs[0].data();
-
-      // if (!userDoc.isApproved) {
-      //   setErrorMsg("Your account is not approved yet.");
-      //   return;
-      // }
 
       // Step 2: Proceed with login
       await signInWithEmailAndPassword(auth, email, password);
