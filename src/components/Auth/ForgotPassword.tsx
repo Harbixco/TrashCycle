@@ -9,23 +9,29 @@ export default function ForgotPassword() {
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     setErrorMsg("");
-    try {
-      // Step 1: Check Firestore for user approval
-      const testEmail = query(
-        collection(db, "users"),
-        where("email", "==", email),
-      );
 
-      const querySnapshot = await getDocs(testEmail);
+    if (email == "") {
+      setErrorMsg("Fill the email correctly");
+    } else {
+      try {
+        // Step 1: Check Firestore for user approval
+        const testEmail = query(
+          collection(db, "users"),
+          where("email", "==", email),
+        );
 
-      if (querySnapshot.empty) {
-        setErrorMsg("incorrect email");
-        return;
+        const querySnapshot = await getDocs(testEmail);
+
+        if (querySnapshot.empty) {
+          setErrorMsg("incorrect email");
+          return;
+        }
+      } catch (err) {
+        setErrorMsg("");
       }
-    } catch (err) {
-      setErrorMsg("");
     }
   };
+
   return (
     <div className="mt-16 flex items-center justify-center bg-white px-4 md:mt-0 md:min-h-screen">
       <div className="w-full max-w-sm space-y-6">
