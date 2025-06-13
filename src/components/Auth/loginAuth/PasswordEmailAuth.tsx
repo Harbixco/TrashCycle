@@ -20,24 +20,28 @@ export default function PasswordEmailAuth() {
     e.preventDefault();
     setErrorMsg("");
 
-    try {
-      await createUserWithEmailAndPassword(auth, email, password);
+    if (email == "" || password == "" || fullName == "" || phoneNumber != 11) {
+      setErrorMsg("Fill the whole field correctly");
+    } else {
+      try {
+        await createUserWithEmailAndPassword(auth, email, password);
 
-      //BUTTON TO CREATE NEW MOVIE DATA IN DATABASE
-      await addDoc(userCollectionRef, {
-        email,
-        password,
-        fullName,
-        phoneNumber,
-      });
+        //BUTTON TO CREATE NEW MOVIE DATA IN DATABASE
+        await addDoc(userCollectionRef, {
+          email,
+          password,
+          fullName,
+          phoneNumber,
+        });
 
-      const timer = setTimeout(() => {
-        navigate("/verify");
-      }, 2000);
+        const timer = setTimeout(() => {
+          navigate("/verify");
+        }, 2000);
 
-      return () => clearTimeout(timer);
-    } catch (err) {
-      setErrorMsg("Email already used");
+        return () => clearTimeout(timer);
+      } catch (err) {
+        setErrorMsg("");
+      }
     }
   };
 
@@ -68,13 +72,13 @@ export default function PasswordEmailAuth() {
           onChange={(e) => setPassword(e.target.value)}
           className="w-full rounded-md border border-green-700 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
         />
+        {errorMsg && <p style={{ color: "red" }}>{errorMsg}</p>}
         <button
           className="mt-5 w-full rounded-md bg-adminPrimary py-2 text-white hover:bg-green-700"
           onClick={onSubmit}
         >
           Register
         </button>
-        {errorMsg && <p style={{ color: "red" }}>{errorMsg}</p>}
       </div>
     </>
   );

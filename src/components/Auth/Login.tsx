@@ -13,33 +13,31 @@ export default function Login() {
   const handleLogin = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     setErrorMsg("");
-    try {
-      // Step 1: Check Firestore for user approval
-      const testEmail = query(
-        collection(db, "users"),
-        where("email", "==", email),
-        where("password", "==", password),
-      );
 
-      const querySnapshot = await getDocs(testEmail);
+    if (email == "" || password == "") {
+      setErrorMsg("Fill the email and password");
+    } else {
+      try {
+        // Step 1: Check Firestore for user approval
+        const testEmail = query(
+          collection(db, "users"),
+          where("email", "==", email),
+          where("password", "==", password),
+        );
 
-      if (querySnapshot.empty) {
-        setErrorMsg("Email or password not correct");
-        return;
+        const querySnapshot = await getDocs(testEmail);
+
+        if (querySnapshot.empty) {
+          setErrorMsg("Email or password incorrect");
+          return;
+        }
+
+        // Step 2: Proceed with login
+        await signInWithEmailAndPassword(auth, email, password);
+        // Redirect or handle successful login
+      } catch (err) {
+        setErrorMsg("");
       }
-
-      // const userDoc = querySnapshot.docs[0].data();
-
-      // if (!userDoc.isApproved) {
-      //   setErrorMsg("Your account is not approved yet.");
-      //   return;
-      // }
-
-      // Step 2: Proceed with login
-      await signInWithEmailAndPassword(auth, email, password);
-      // Redirect or handle successful login
-    } catch (err) {
-      setErrorMsg("");
     }
   };
 
@@ -69,6 +67,9 @@ export default function Login() {
                 required
                 className="w-full rounded-md border border-green-700 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
               />
+              <div>
+                {errorMsg && <p style={{ color: "red" }}>{errorMsg}</p>}
+              </div>
               <div className="pb-2 text-right">
                 <Link
                   to="/forgot-password"
@@ -90,9 +91,6 @@ export default function Login() {
                   Log In
                 </button>
               </Link>
-              <div>
-                {errorMsg && <p style={{ color: "red" }}>{errorMsg}</p>}
-              </div>
             </div>
           </form>
 
