@@ -4,6 +4,7 @@ import { collection, addDoc } from "firebase/firestore";
 import { db } from "./config/firebase.ts";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function PasswordEmailAuth() {
   //CREATE NEW MOVIE DATA FOR DATABASE AND ALSO AUTHETICATE EMAIL AND PASSWORD
@@ -12,6 +13,8 @@ export default function PasswordEmailAuth() {
   const [fullName, setFullName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState(0);
   const [errorMsg, setErrorMsg] = useState("");
+  const [visible, setVisible] = useState(false);
+  const toggleVisibility = () => setVisible(!visible);
 
   const userCollectionRef = collection(db, "users");
   const navigate = useNavigate();
@@ -66,12 +69,22 @@ export default function PasswordEmailAuth() {
           onChange={(e) => setPhoneNumber(Number(e.target.value))}
           className="w-full rounded-md border border-green-700 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
         />
-        <input
-          type="password"
-          placeholder="Enter Password"
-          onChange={(e) => setPassword(e.target.value)}
-          className="w-full rounded-md border border-green-700 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
-        />
+        <div className="relative mx-auto w-full max-w-md">
+          <input
+           type={visible ? "text" : "password"}
+            placeholder="Enter Password"
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full rounded-md border border-green-700 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
+          />
+          <button
+            type="button"
+            onClick={toggleVisibility}
+            className="absolute inset-y-0 right-3 flex items-center text-gray-600"
+          >
+            {visible ? <EyeOff size={20} /> : <Eye size={20} />}
+          </button>
+        </div>
+
         {errorMsg && <p style={{ color: "red" }}>{errorMsg}</p>}
         <button
           className="mt-5 w-full rounded-md bg-adminPrimary py-2 text-white hover:bg-green-700"

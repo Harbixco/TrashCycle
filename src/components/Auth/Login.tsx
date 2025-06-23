@@ -4,11 +4,16 @@ import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { auth, db } from "../Auth/loginAuth/config/firebase";
+import { useNavigate } from "react-router-dom";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+  const navigate = useNavigate();
+  const [visible, setVisible] = useState(false);
+  const toggleVisibility = () => setVisible(!visible);
 
   const handleLogin = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -35,6 +40,12 @@ export default function Login() {
         // Step 2: Proceed with login
         await signInWithEmailAndPassword(auth, email, password);
         // Redirect or handle successful login
+
+        const timer = setTimeout(() => {
+          navigate("/dashboard");
+        }, 2000);
+
+        return () => clearTimeout(timer);
       } catch (err) {
         setErrorMsg("");
       }
@@ -59,14 +70,24 @@ export default function Login() {
                 required
                 className="w-full rounded-md border border-green-700 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
               />
-              <input
-                type="password"
-                placeholder="Enter Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                className="w-full rounded-md border border-green-700 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
-              />
+              <div className="relative mx-auto w-full max-w-md">
+                <input
+                  type={visible ? "text" : "password"}
+                  placeholder="Enter Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  className="w-full rounded-md border border-green-700 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
+                />
+                <button
+                  type="button"
+                  onClick={toggleVisibility}
+                  className="absolute inset-y-0 right-3 flex items-center text-gray-600"
+                >
+                  {visible ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
+              </div>
+
               <div>
                 {errorMsg && <p style={{ color: "red" }}>{errorMsg}</p>}
               </div>
