@@ -3,7 +3,6 @@ import { Search, Settings, Bell, AlignJustify } from "lucide-react";
 import { profile } from "../assets";
 import { useNavigate } from "react-router-dom";
 import { DashboardMobileSidebar } from "../pages";
-// import { Notification } from "../../DummyData/AdminDummy";
 
 export default function DashboardNavbar() {
   const [toggler, setToggler] = useState(false);
@@ -39,7 +38,7 @@ export default function DashboardNavbar() {
         <div className="flex items-center gap-x-5">
           <div
             className="cursor-pointer"
-            onClick={() => navigate("/admin/settings")}
+            onClick={() => navigate("/dashboard/setting")}
           >
             <Settings size={20} color="#222" />
           </div>
@@ -57,44 +56,6 @@ export default function DashboardNavbar() {
               <div className="bg-primary text-white">
                 <h3 className="py-2 pl-2">Notification</h3>
               </div>
-              {/* <div className=" w-full bg-white py-3">
-                {SlicedNotification.map((data) => (
-                  <div
-                    className="mx-auto flex w-[94%] cursor-pointer items-start justify-between border-b pb-3 pt-2"
-                    key={data.id}
-                    onClick={() => handleNotificationClick(data.id)} // Handle click for navigation and close notification
-                  >
-                    <div className="flex items-center gap-x-1">
-                      <div className="size-[34px] rounded-full">
-                        <img
-                          src={data.avatar}
-                          alt="profile"
-                          className="w-full rounded-full"
-                        />
-                      </div>
-                      <div>
-                        <p className="text-[13px]">
-                          <span className="font-semibold">{data.name}</span>{" "}
-                          {data.message}
-                        </p>
-                        <p className="text-[12px] text-[#B9B1B1]">
-                          {data.time}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="mt-1 size-2 rounded-full bg-secondary"></div>
-                  </div>
-                ))}
-
-                <div className="flex items-center justify-center pb-2 pt-3">
-                  <button
-                    className="text-[12px] font-semibold text-primary  md:text-sm "
-                    onClick={handleClick}
-                  >
-                    View all
-                  </button>
-                </div>
-              </div> */}
             </div>
           )}
         </div>
