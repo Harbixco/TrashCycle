@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
-const Studentsidebar = () => {
+export default function Usersidebar() {
   const [isCoursesActive] = useState(false);
 
   const active =
@@ -90,6 +90,4 @@ const Studentsidebar = () => {
       </div>
     </div>
   );
-};
-
-export default Studentsidebar;
+}
