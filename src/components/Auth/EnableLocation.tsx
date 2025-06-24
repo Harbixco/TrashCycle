@@ -18,7 +18,7 @@ export default function EnableLocation() {
           type="button"
           className="mt-4 w-48 rounded-md bg-adminPrimary py-1.5 text-white hover:bg-green-700"
         >
-          <Link to="/location-succesful">Enable</Link>
+          <Link to="/get-user-location">Enable</Link>
         </button>
       </div>
 

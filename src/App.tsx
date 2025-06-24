@@ -36,6 +36,7 @@ import {
   Setting,
   Settingchangepassword,
   Settingnotification,
+  GetUserLocation,
 } from "./components";
 
 import { Dashboard, DashboardLayout } from "./pages";
@@ -51,6 +52,11 @@ function App() {
       path: "/enable-location",
       element: <EnableLocation />,
     },
+    {
+      path: "/get-user-location",
+      element: <GetUserLocation />,
+    },
+    
     {
       path: "/location-succesful",
       element: <LocationSuccesful />,
