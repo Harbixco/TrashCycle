@@ -23,7 +23,7 @@ export default function PasswordEmailAuth() {
     e.preventDefault();
     setErrorMsg("");
 
-    if (email == "" || password == "" || fullName == "" || phoneNumber != 11) {
+    if (email == "" || password == "" || fullName == "") {
       setErrorMsg("Fill the whole field correctly");
     } else {
       try {

@@ -30,6 +30,7 @@ export { default as SchedulePickups } from "./CustomerDashboard/SchedulePickups"
 export { default as Support } from "./CustomerDashboard/Support";
 export { default as Logout } from "./CustomerDashboard/Logout";
 export { default as LocationSuccesful } from "./Auth/LocationSuccesful";
+export { default as GetUserLocation } from "./Auth/GetUserLocation";
 export { default as SettingLayout } from "./SettingsDashboard/SettingLayout";
 export { default as Setting } from "./SettingsDashboard/Setting";
 export { default as Settingchangepassword } from "./SettingsDashboard/ChangePassword";
