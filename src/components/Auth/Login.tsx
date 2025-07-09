@@ -16,41 +16,47 @@ export default function Login() {
   const toggleVisibility = () => setVisible(!visible);
 
   const handleLogin = async (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    setErrorMsg("");
+  e.preventDefault();
+  setErrorMsg("");
 
-    if (email == "" || password == "") {
-      setErrorMsg("Fill the email and password");
-    } else {
-      try {
-        // Step 1: Check Firestore for user approval
-        const testEmail = query(
-          collection(db, "users"),
-          where("email", "==", email),
-          where("password", "==", password),
-        );
+  if (email === "" || password === "") {
+    setErrorMsg("Fill the email and password");
+    return;
+  }
 
-        const querySnapshot = await getDocs(testEmail);
+  try {
+    // Step 1: Login using Firebase Auth
+    await signInWithEmailAndPassword(auth, email, password);
 
-        if (querySnapshot.empty) {
-          setErrorMsg("Email or password incorrect");
-          return;
-        }
+    // Step 2: Optionally check if the user exists in Firestore for roles, approval, etc.
+    // (Don't use password here)
+    const userQuery = query(
+      collection(db, "users"),
+      where("email", "==", email)
+    );
+    const snapshot = await getDocs(userQuery);
 
-        // Step 2: Proceed with login
-        await signInWithEmailAndPassword(auth, email, password);
-        // Redirect or handle successful login
-
-        const timer = setTimeout(() => {
-          navigate("/dashboard");
-        }, 2000);
-
-        return () => clearTimeout(timer);
-      } catch (err) {
-        setErrorMsg("");
+    if (!snapshot.empty) {
+      const userData = snapshot.docs[0].data();
+      // Example: check if user is approved
+      if (userData?.approved === false) {
+        setErrorMsg("Your account is not approved.");
+        return;
       }
     }
-  };
+
+    // Redirect to dashboard
+    navigate("/dashboard");
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (err: any) {
+    console.error(err);
+    if (err.code === "auth/user-not-found" || err.code === "auth/wrong-password") {
+      setErrorMsg("Email or password incorrect");
+    } else {
+      setErrorMsg("An unexpected error occurred.");
+    }
+  }
+};
 
   return (
     <>
