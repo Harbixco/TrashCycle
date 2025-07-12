@@ -116,3 +116,19 @@ export const selectDetails = {
   truck: "Small Truck",
   amount: "$10",
 };
+
+export const lesson = [
+  {
+    title: "Wireframing",
+    name: "Mitchell Mitchell",
+    lesson: "Lesson 1",
+    time: "9am | 50 mins",
+  },
+
+  {
+    title: "User Experience",
+    name: "Mitchell Mitchell",
+    lesson: "Lesson 2",
+    time: "9am | 3 hr",
+  },
+];
