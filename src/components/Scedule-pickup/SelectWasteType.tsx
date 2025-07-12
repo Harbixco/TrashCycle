@@ -37,7 +37,7 @@ export default function SelectWasteType() {
           </button>
         </Link>
 
-        <h1 className="pl-20 font-semibold text-gray-900 md:pl-48 md:text-xl">
+         <h1 className="pl-20 font-semibold text-gray-900 md:pl-20 md:text-xl lg:pl-48">
           SELECT WASTE TYPE
         </h1>
       </div>
