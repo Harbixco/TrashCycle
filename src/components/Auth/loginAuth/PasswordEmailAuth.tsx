@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { auth } from "./config/firebase.ts";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { db } from "./config/firebase.ts";
@@ -27,7 +28,11 @@ export default function PasswordEmailAuth() {
     }
 
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password,
+      );
       const user = userCredential.user;
 
       // Save user details in Firestore using UID
