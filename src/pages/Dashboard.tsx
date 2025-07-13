@@ -1,8 +1,54 @@
-import { profileDetail, selectDetails } from "../DummyData";
+import { useEffect, useState } from "react";
+import { doc, getDoc } from "firebase/firestore";
+import { auth, db } from "../components/Auth/loginAuth/config/firebase";
 import { CalendarCompo } from "../common";
 import CurrentTime from "../common/CurrentTime";
+import { selectDetails, profileDetail } from "../DummyData";
+import IsLoading from "./IsLoading";
+
+interface UserData {
+  fullName: string;
+  email: string;
+}
 
 export default function Dashboard() {
+  const [userData, setUserData] = useState<UserData | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      const user = auth.currentUser;
+      if (!user) return;
+
+      try {
+        const userRef = doc(db, "users", user.uid);
+        const userSnap = await getDoc(userRef);
+
+        if (userSnap.exists()) {
+          setUserData(userSnap.data() as UserData);
+        } else {
+          console.error("User document not found");
+        }
+      } catch (err) {
+        console.error("Error fetching user data:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUserDetails();
+  }, []);
+
+  if (loading) {
+    return <IsLoading />;
+  }
+
+  if (!userData) {
+    return (
+      <p className="mt-10 text-center text-red-500">User data not found.</p>
+    );
+  }
+
   return (
     <div className="flex w-full flex-col items-start justify-between gap-y-6 md:flex-row md:gap-y-0 ">
       <div className="w-full rounded-xl  md:w-[70%]">
@@ -10,21 +56,22 @@ export default function Dashboard() {
           <div>
             <div className="pb-3">
               <span className="mb-1 text-xl font-bold">
-                Hello {profileDetail.name}
+                Hello {userData.fullName}
               </span>
 
               <span className="mb-1 pl-2 text-sm font-medium">
-                {" "}
-                ({profileDetail.mail}){" "}
+                ({userData.email})
               </span>
             </div>
 
-            <p className="text-gray-700">{profileDetail.firstText}</p>
-            <p className="text-gray-700">{profileDetail.secondText}</p>
+            <p className="text-gray-700">
+              {profileDetail.firstText || "Welcome to your dashboard."}
+            </p>
+            <p className="text-gray-700">{profileDetail.secondText || ""}</p>
           </div>
           <img
             className="size-16 rounded-full border-2 border-green-500 object-cover"
-            src={profileDetail.profile}
+            src={profileDetail.profile || "/default-profile.png"}
             alt="Profile"
           />
         </div>
@@ -49,8 +96,7 @@ export default function Dashboard() {
               </button>
             </div>
             <p className="text-sm text-gray-700">
-              {selectDetails.address}
-              105102.
+              {selectDetails.address} 105102.
             </p>
           </div>
 

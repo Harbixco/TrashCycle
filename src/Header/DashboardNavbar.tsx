@@ -1,13 +1,43 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Search, Settings, Bell, AlignJustify } from "lucide-react";
 import { profile } from "../assets";
 import { useNavigate } from "react-router-dom";
 import { DashboardMobileSidebar } from "../pages";
+import { doc, getDoc } from "firebase/firestore";
+import { auth, db } from "../components/Auth/loginAuth/config/firebase";
+
+interface UserData {
+  fullName: string;
+}
 
 export default function DashboardNavbar() {
   const [toggler, setToggler] = useState(false);
   const [notify, setNotify] = useState(false);
   const navigate = useNavigate();
+
+  const [userData, setUserData] = useState<UserData | null>(null);
+
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      const user = auth.currentUser;
+      if (!user) return;
+
+      try {
+        const userRef = doc(db, "users", user.uid);
+        const userSnap = await getDoc(userRef);
+
+        if (userSnap.exists()) {
+          setUserData(userSnap.data() as UserData);
+        } else {
+          console.error("User document not found");
+        }
+      } catch (err) {
+        console.error("Error fetching user data:", err);
+      }
+    };
+
+    fetchUserDetails();
+  }, []);
 
   return (
     <div className="flex  w-full items-center justify-between">
@@ -64,7 +94,7 @@ export default function DashboardNavbar() {
             <img src={profile} alt="profile" className="w-full rounded-full" />
           </div>
           <div className="">
-            <h2 className="font-bold">ADEDEJI ALLI</h2>
+            <h2 className="font-bold">{userData?.fullName}</h2>
           </div>
         </div>
       </div>

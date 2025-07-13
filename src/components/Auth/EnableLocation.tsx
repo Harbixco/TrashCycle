@@ -27,7 +27,7 @@ export default function EnableLocation() {
           type="button"
           className="mt-5 rounded-lg px-5 py-2 text-sm font-semibold"
         >
-          <Link to="/">Not Now</Link>
+          <Link to="/login">Not Now</Link>
         </button>
       </div>
     </div>
