@@ -56,7 +56,7 @@ function App() {
       path: "/get-user-location",
       element: <GetUserLocation />,
     },
-    
+
     {
       path: "/location-succesful",
       element: <LocationSuccesful />,
