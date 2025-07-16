@@ -82,10 +82,14 @@ export default function Usersidebar() {
             <CircleHelp size={18} />
             Support & Help
           </NavLink>
-          <button className=" flex w-full items-center gap-x-3 py-1 pl-2 text-black">
+
+          <NavLink
+            to="/dashboard/logout"
+            className={({ isActive }) => (isActive ? active : inactive)}
+          >
             <LogOut size={18} />
             Logout
-          </button>
+          </NavLink>
         </div>
       </div>
     </div>

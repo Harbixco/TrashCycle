@@ -45,9 +45,6 @@ export default function Login() {
           return;
         }
 
-        // Store userData in localStorage or state if needed
-        console.log("Logged in user data:", userData);
-
         // Redirect to dashboard
         navigate("/dashboard");
       } else {
@@ -62,7 +59,7 @@ export default function Login() {
       ) {
         setErrorMsg("Email or password incorrect.");
       } else {
-        setErrorMsg("Login failed. Please try again.");
+        setErrorMsg("Email or password incorrect.");
       }
     }
   };
