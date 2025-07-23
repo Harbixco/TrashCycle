@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { auth } from "./config/firebase.ts";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { sendEmailVerification } from "firebase/auth"; // getAuth is not strictly needed here if you use the user object
 import { db } from "./config/firebase.ts";
 import { doc, setDoc } from "firebase/firestore";
 import { useState } from "react";
@@ -17,6 +18,7 @@ export default function PasswordEmailAuth() {
   const toggleVisibility = () => setVisible(!visible);
 
   const navigate = useNavigate();
+  // const auths = getAuth(); // No longer strictly needed for sendEmailVerification if using userCredential.user
 
   const onSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -29,11 +31,11 @@ export default function PasswordEmailAuth() {
 
     try {
       const userCredential = await createUserWithEmailAndPassword(
-        auth,
+        auth, // This 'auth' comes from your firebase.ts config, which is correct
         email,
         password,
       );
-      const user = userCredential.user;
+      const user = userCredential.user; // This 'user' is the newly signed-in user
 
       // Save user details in Firestore using UID
       await setDoc(doc(db, "users", user.uid), {
@@ -43,6 +45,30 @@ export default function PasswordEmailAuth() {
         phoneNumber,
         createdAt: new Date().toISOString(),
       });
+
+      // --- FIX START ---
+      // Use the 'user' object directly from the userCredential
+      // It is guaranteed to be a User object at this point if createUserWithEmailAndPassword succeeded
+      if (user) {
+        // Although userCredential.user is typically non-null on success, a defensive check doesn't hurt
+        sendEmailVerification(user) // Pass the 'user' object here
+          .then(() => {
+            console.log("Verification email successfully sent!");
+            // Optionally, update UI or state to indicate email sent
+          })
+          .catch((err) => {
+            console.error("Error sending verification email:", err); // Use console.error for errors
+            setErrorMsg("Failed to send verification email. Please try again.");
+          });
+      } else {
+        console.error(
+          "User object is null after creation. This should not happen.",
+        );
+        setErrorMsg(
+          "An unexpected error occurred. User not found after registration.",
+        );
+      }
+      // --- FIX END ---
 
       const timer = setTimeout(() => {
         navigate("/verify");

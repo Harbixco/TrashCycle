@@ -1,7 +1,6 @@
 export { default as EnableLocation } from "./Auth/EnableLocation";
 export { default as Login } from "./Auth/Login";
 export { default as Signup } from "./Auth/loginAuth/Signup";
-export { default as VerifySuccesful } from "./Auth/VerifySuccesful";
 export { default as Verify } from "./Auth/Verify";
 export { default as CancelOption } from "./Cancel/CancelOption";
 export { default as CancelPickup } from "./Cancel/CancelPickup";
