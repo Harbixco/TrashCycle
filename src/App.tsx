@@ -3,7 +3,6 @@ import {
   EnableLocation,
   Login,
   Signup,
-  VerifySuccesful,
   Verify,
   CancelOption,
   CancelPickup,
@@ -72,10 +71,6 @@ function App() {
     {
       path: "/forgot-password",
       element: <ForgotPassword />,
-    },
-    {
-      path: "/verify-succesful",
-      element: <VerifySuccesful />,
     },
     {
       path: "/verify",
